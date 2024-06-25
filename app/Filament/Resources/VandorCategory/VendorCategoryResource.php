@@ -24,7 +24,7 @@ class VendorCategoryResource extends Resource
 
     protected static ?string $modelLabel = 'Vendor Category';
 
-    protected static ?string $navigationGroup = 'Category';
+    protected static ?string $navigationGroup = 'Partners';
 
     protected static ?string $slug = 'vendor-categories';
 

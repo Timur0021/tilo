@@ -4,7 +4,7 @@ namespace App\Filament\Resources\Vendor;
 
 use App\Filament\Resources\Vendor\VendorResource\Pages;
 use App\Filament\Resources\Vendor\VendorResource\RelationManagers;
-use App\Models\Vendor\Vendor;
+use App\Models\Vendor;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -17,7 +17,15 @@ class VendorResource extends Resource
 {
     protected static ?string $model = Vendor::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard';
+
+    protected static ?string $navigationLabel = 'Vendor';
+
+    protected static ?string $modelLabel = 'Vendor';
+
+    protected static ?string $navigationGroup = 'Partners';
+
+    protected static ?string $slug = 'vendors';
 
     public static function form(Form $form): Form
     {
