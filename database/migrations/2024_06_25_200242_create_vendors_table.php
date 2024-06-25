@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('vendors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->longText('description');
             $table->string('color');
             $table->boolean('is_active')->default(false);
             $table->foreignId('vendor_category_id')->nullable()->constrained('vendor_categories');

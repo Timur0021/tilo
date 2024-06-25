@@ -5,7 +5,9 @@ namespace App\Filament\Resources\Vendor;
 use App\Filament\Resources\Vendor\VendorResource\Pages;
 use App\Filament\Resources\Vendor\VendorResource\RelationManagers;
 use App\Models\Vendor;
+use App\Models\VendorCategory;
 use Filament\Forms;
+use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -31,7 +33,35 @@ class VendorResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Section::make('Vendors information')
+                    ->description('Information about the vendor')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->label('Name')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\Select::make('vendor_category_id')
+                            ->label('Vendor Category')
+                            ->relationship('vendorCategory', 'title')
+                            ->options(function () {
+                                return VendorCategory::where('is_active', true)->pluck('title', 'id')->toArray();
+                            }),
+                        ColorPicker::make('color')
+                            ->rgb(),
+                        Forms\Components\Checkbox::make('is_active')
+                            ->label('Active')
+                            ->default(false),
+                    ])->columnSpan(2)->columns(1),
+                Forms\Components\Section::make('Vendor Logo')
+                    ->description('Upload a logo')
+                    ->schema([
+                        Forms\Components\SpatieMediaLibraryFileUpload::make('vendor_logo_banner')
+                            ->label('Logo image')
+                            ->collection('vendor_logo_banner')
+                            ->image()
+                            ->imageEditor(),
+                    ])
+
             ]);
     }
 
