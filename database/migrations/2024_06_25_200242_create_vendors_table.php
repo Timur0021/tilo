@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vendor_categories', function (Blueprint $table) {
+        Schema::create('vendors', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->longText('description')->nullable();
+            $table->string('name');
+            $table->longText('description');
+            $table->string('color');
             $table->boolean('is_active')->default(false);
+            $table->foreignId('vendor_category_id')->nullable()->constrained('vendor_categories');
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vendor_categories');
+        Schema::dropIfExists('vendors');
     }
 };
