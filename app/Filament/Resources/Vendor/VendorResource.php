@@ -11,6 +11,8 @@ use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -40,14 +42,15 @@ class VendorResource extends Resource
                             ->label('Name')
                             ->required()
                             ->maxLength(255),
+                        Forms\Components\MarkdownEditor::make('description')
+                            ->label('Description')
+                            ->required(),
                         Forms\Components\Select::make('vendor_category_id')
                             ->label('Vendor Category')
                             ->relationship('vendorCategory', 'title')
                             ->options(function () {
                                 return VendorCategory::where('is_active', true)->pluck('title', 'id')->toArray();
                             }),
-                        ColorPicker::make('color')
-                            ->rgb(),
                         Forms\Components\Checkbox::make('is_active')
                             ->label('Active')
                             ->default(false),
@@ -69,7 +72,23 @@ class VendorResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('id')
+                    ->label('ID'),
+                TextColumn::make('name')
+                    ->label('Name'),
+                TextColumn::make('description')
+                    ->label('Description'),
+                TextColumn::make('vendorCategory.title')
+                    ->label('Vendor Category'),
+               Tables\Columns\SpatieMediaLibraryImageColumn::make('vendor_logo_banner')
+                    ->disk('public')
+                    ->collection('vendor_logo_banner')
+                    ->circular(),
+               IconColumn::make('is_active')
+                    ->label('Active')
+                    ->boolean(),
+               TextColumn::make('created_at')
+                    ->label('Created at'),
             ])
             ->filters([
                 //

@@ -18,7 +18,7 @@ class Vendor extends Model implements HasMedia
 
     protected $fillable = [
         'name',
-        'color',
+        'description',
         'is_active',
         'vendor_category_id',
     ];

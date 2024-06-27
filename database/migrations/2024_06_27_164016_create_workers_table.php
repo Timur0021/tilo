@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vendors', function (Blueprint $table) {
+        Schema::create('workers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->longText('description');
-            $table->boolean('is_active')->default(false);
-            $table->foreignId('vendor_category_id')->nullable()->constrained('vendor_categories');
+            $table->string('surname');
+            $table->decimal('salary', 8, 2);
+            $table->dateTime('birth_date');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vendors');
+        Schema::dropIfExists('workers');
     }
 };
