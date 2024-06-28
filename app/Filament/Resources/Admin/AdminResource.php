@@ -66,6 +66,8 @@ class AdminResource extends Resource
                     ->label('Name'),
                 TextColumn::make('email')
                     ->label('Email'),
+                TextColumn::make('roles.name')
+                    ->label('Role'),
                 TextColumn::make('password')
                     ->label('Password'),
                 TextColumn::make('created_at')
