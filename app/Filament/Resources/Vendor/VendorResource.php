@@ -41,10 +41,12 @@ class VendorResource extends Resource
                         Forms\Components\TextInput::make('name')
                             ->label('Name')
                             ->required()
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->placeholder('Enter Name'),
                         Forms\Components\MarkdownEditor::make('description')
                             ->label('Description')
-                            ->required(),
+                            ->required()
+                            ->placeholder('Enter description'),
                         Forms\Components\Select::make('vendor_category_id')
                             ->label('Vendor Category')
                             ->relationship('vendorCategory', 'title')
