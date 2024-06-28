@@ -24,7 +24,7 @@ class WorkerResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-user';
 
-    protected static ?string $navigationLabel = 'Workers';
+    protected static ?string $navigationLabel = 'Worker';
 
     protected static ?string $modelLabel = 'Workers List';
 
