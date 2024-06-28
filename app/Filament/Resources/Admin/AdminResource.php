@@ -6,6 +6,8 @@ use App\Filament\Resources\Admin\AdminResource\Pages;
 use App\Filament\Resources\Admin\AdminResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -32,7 +34,25 @@ class AdminResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Section::make('Admin Information')
+                    ->description('Create Admin')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->placeholder('Enter Admin Name'),
+                        TextInput::make('email')
+                            ->label('Admin Email')
+                            ->type('email')
+                            ->required()
+                            ->placeholder('Enter Admin Email'),
+                        TextInput::make('password')
+                            ->label('Admin Password')
+                            ->required()
+                            ->placeholder('Enter Admin Password'),
+                        Select::make('roles')
+                            ->multiple()
+                            ->relationship('roles', 'name')
+                    ])->columnSpan(2)->columns(2),
             ]);
     }
 
