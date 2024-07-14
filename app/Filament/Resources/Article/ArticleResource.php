@@ -40,6 +40,9 @@ class ArticleResource extends Resource
                             ->label('Title')
                             ->required()
                             ->placeholder('Enter Article Title'),
+                        Forms\Components\TextInput::make('second_title')
+                            ->label('Second Title')
+                            ->placeholder('Enter Article Second Title'),
                         Forms\Components\MarkdownEditor::make('description')
                             ->label('Description')
                             ->required()
@@ -49,7 +52,7 @@ class ArticleResource extends Resource
                             ->default(false),
                         Forms\Components\Hidden::make('user_id')
                             ->default(Auth::id()),
-                    ]),
+                    ])->columns(1),
                 Forms\Components\Section::make('Image Article')
                     ->description('This is the image about the article.')
                     ->schema([
@@ -70,6 +73,8 @@ class ArticleResource extends Resource
                     ->label('ID'),
                 TextColumn::make('title')
                     ->label('Title'),
+                TextColumn::make('second_title')
+                    ->label('Second Title'),
                 TextColumn::make('description')
                     ->label('Description'),
                 Tables\Columns\SpatieMediaLibraryImageColumn::make('image_article')

@@ -17,6 +17,7 @@ class Article extends Model implements HasMedia
 
     public $fillable = [
         'title',
+        'second_title',
         'description',
         'published',
         'user_id',
