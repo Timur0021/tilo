@@ -53,31 +53,49 @@
                 <a href="#" class="btn btn-dark rounded-pill text-white py-2 px-4 flex-wrap flex-sm-shrink-0" style="background-color: black">Book Appointment</a>
             </div>
         </nav>
-
-
-        <!-- Carousel Start -->
-<!--        <div class="header-carousel owl-carousel">-->
-<!--            @foreach($articles as $article)-->
-<!--            <div class="header-carousel-item">-->
-<!--                <img src="{{ url( $article->getFirstMediaUrl('image_article', 'preview')) }}" class="img-fluid w-100" alt="Image">-->
-<!--                <div class="carousel-caption">-->
-<!--                    <div class="carousel-caption-content p-3">-->
-<!--                        <h5 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">{{ $article->title }}</h5>-->
-<!--                        <h1 class="display-1 text-capitalize text-white mb-4">{{ $article->second_title }}</h1>-->
-<!--                        <p class="mb-5 fs-5">{{ $article->description }}</p>-->
-<!--                        <a class="btn btn-danger rounded-pill text-white py-3 px-5" href="#">Book Appointment</a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            @endforeach-->
-<!--        </div>-->
-        <!-- Carousel End -->
     </div>
 </template>
 <script lang="js">
-import { defineComponent } from "vue";
+import { defineComponent, reactive } from "vue";
+import axios from "axios";
+import { onMounted } from "vue";
 
 export default defineComponent({
-    components: {}
+    setup() {
+        const state = reactive({
+            articles: [],
+            loading: true,
+            error: null
+        });
+
+        onMounted(() => {
+            // Your axios fetch and state initialization
+            axios.get('/api/')
+                .then(response => {
+                    state.articles = response.data;
+
+                    // Reinitialize Owl Carousel here after data fetch
+                    $(".header-carousel").owlCarousel({
+                        loop: true,
+                        autoplay: true,
+                        autoplayTimeout: 5000,
+                        items: 1,
+                        nav: true,
+                        dots: false
+                    });
+                })
+                .catch(error => {
+                    state.error = error.message;
+                    console.error('Error fetching articles:', error);
+                })
+                .finally(() => {
+                    state.loading = false;
+                });
+        });
+
+        return {
+            state
+        };
+    }
 });
 </script>

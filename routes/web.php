@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Main\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', fn () => view('home'))->name('app');
+Route::get('{any?}', fn () => view('home'))->where('any', '.*');
 
 //Route::get('/', [HomeController::class, 'getArticle'])->name('getArticle');
