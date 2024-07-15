@@ -26,7 +26,7 @@
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-light bg-white px-4 px-lg-5 py-3 py-lg-0">
             <a href="index.html" class="navbar-brand p-0">
-                <img src="" alt="TILO" class="m-0" style="max-width: 6rem; height: auto; border-radius: 50%;">
+                <img src="../logo/tilo.jpeg" alt="TILO" class="m-0" style="max-width: 6rem; height: auto; border-radius: 50%;">
                 <!-- <img src="img/logo.png" alt="Logo"> -->
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
