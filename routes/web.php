@@ -14,4 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'getArticle'])->name('getArticle');
+Route::get('/', fn () => view('home'))->name('app');
+
+//Route::get('/', [HomeController::class, 'getArticle'])->name('getArticle');

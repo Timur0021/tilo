@@ -11,15 +11,12 @@ class HomeController extends Controller
 {
     public function getArticle()
     {
-        $articles = Article::where('published', true)
-                        ->orderBy('created_at', 'desc')
-                        ->take(3)
-                        ->get();
-        $services = Service::where('is_active', true)
-                        ->get();
-        return view('home', [
-            'articles' => $articles,
-            'services' => $services,
-        ]);
+//        $articles = Article::where('published', true)
+//                        ->orderBy('created_at', 'desc')
+//                        ->take(3)
+//                        ->get();
+//        $services = Service::where('is_active', true)
+//                        ->get();
+        return view('home');
     }
 }
