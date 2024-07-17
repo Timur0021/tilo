@@ -56,46 +56,9 @@
     </div>
 </template>
 <script lang="js">
-import { defineComponent, reactive } from "vue";
-import axios from "axios";
-import { onMounted } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
-    setup() {
-        const state = reactive({
-            articles: [],
-            loading: true,
-            error: null
-        });
 
-        onMounted(() => {
-            // Your axios fetch and state initialization
-            axios.get('/api/')
-                .then(response => {
-                    state.articles = response.data;
-
-                    // Reinitialize Owl Carousel here after data fetch
-                    $(".header-carousel").owlCarousel({
-                        loop: true,
-                        autoplay: true,
-                        autoplayTimeout: 5000,
-                        items: 1,
-                        nav: true,
-                        dots: false
-                    });
-                })
-                .catch(error => {
-                    state.error = error.message;
-                    console.error('Error fetching articles:', error);
-                })
-                .finally(() => {
-                    state.loading = false;
-                });
-        });
-
-        return {
-            state
-        };
-    }
 });
 </script>
