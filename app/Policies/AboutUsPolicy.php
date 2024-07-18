@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Policies\Information;
+namespace App\Policies;
 
-use App\Models\AboutUs;
 use App\Models\User;
+use App\Models\AboutUs;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class AboutUsPolicy

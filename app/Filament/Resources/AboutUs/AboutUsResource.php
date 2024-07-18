@@ -4,17 +4,12 @@ namespace App\Filament\Resources\AboutUs;
 
 use App\Filament\Resources\AboutUs\AboutUsResource\Pages;
 use App\Filament\Resources\AboutUs\AboutUsResource\RelationManagers;
-use App\Models\Information\AboutUs;
-use App\Models\ServiceCategory;
+use App\Models\AboutUs;
 use Filament\Forms;
-use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Pelmered\FilamentMoneyField\Forms\Components\MoneyInput;
 
 class AboutUsResource extends Resource
 {
@@ -67,7 +62,20 @@ class AboutUsResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('id')
+                    ->label('ID'),
+                Tables\Columns\TextColumn::make('title')
+                    ->label('Title'),
+                Tables\Columns\TextColumn::make('description')
+                    ->label('Description'),
+                Tables\Columns\TextColumn::make('advantages.title')
+                    ->label('Advantages'),
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('about_us_banner')
+                    ->disk('public')
+                    ->collection('about_us_banner')
+                    ->circular(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('Created at'),
             ])
             ->filters([
                 //
