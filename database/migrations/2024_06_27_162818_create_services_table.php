@@ -17,7 +17,7 @@ return new class extends Migration
             $table->longText('description');
             $table->decimal('price', 8, 2)->default(0);
             $table->boolean('is_active')->default(false);
-            $table->foreignId('worker_id')->nullable()->constrained('workers');
+            $table->foreignId('worker_id')->nullable()->constrained('workers')->cascadeOnDelete();
             $table->timestamps();
         });
     }

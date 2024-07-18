@@ -9,6 +9,8 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -31,7 +33,15 @@ class TagsResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Section::make('Tags information')
+                    ->description('Information about the tag')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->label('Name Tag')
+                            ->required()
+                            ->maxLength(255)
+                            ->placeholder('Enter Name Tag'),
+                    ])->columnSpan(2)->columns(1)
             ]);
     }
 
@@ -39,7 +49,10 @@ class TagsResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('id')
+                    ->label('ID'),
+                TextColumn::make('name')
+                    ->label('Name'),
             ])
             ->filters([
                 //

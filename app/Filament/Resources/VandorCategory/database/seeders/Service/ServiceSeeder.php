@@ -1,11 +1,10 @@
 <?php
 
-namespace Database\Seeders\Service;
+namespace App\Filament\Resources\VandorCategory\database\seeders\Service;
 
 use App\Models\Service;
 use App\Models\ServiceCategory;
 use App\Models\Worker;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Http;
 

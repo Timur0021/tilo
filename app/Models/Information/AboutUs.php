@@ -2,10 +2,11 @@
 
 namespace App\Models\Information;
 
-use App\Models\Tag;
+use App\Models\Advantage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Spatie\Image\Enums\Fit;
 use Spatie\MediaLibrary\HasMedia;
@@ -16,16 +17,15 @@ class AboutUs extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
-    protected $table = 'about_us';
-
     protected $fillable = [
         'title',
         'description',
+//        'advantage_id',
     ];
 
-    public function tags(): BelongsToMany
+    public function advantages(): BelongsToMany
     {
-        return $this->belongsToMany(Tag::class, 'about_us_tag', 'about_us_id', 'tag_id');
+        return $this->belongsToMany(Advantage::class, 'about_us_advantage');
     }
 
     public function media(): MorphMany

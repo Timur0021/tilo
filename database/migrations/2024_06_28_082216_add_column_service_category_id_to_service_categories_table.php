@@ -15,7 +15,8 @@ return new class extends Migration
             $table->foreignId('service_category_id')
                 ->nullable()
                 ->after('worker_id')
-                ->constrained('service_categories');
+                ->constrained('service_categories')
+                ->cascadeOnUpdate();
         });
     }
 

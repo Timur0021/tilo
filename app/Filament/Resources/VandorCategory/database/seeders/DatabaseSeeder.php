@@ -1,9 +1,9 @@
 <?php
 
-namespace Database\Seeders;
+namespace App\Filament\Resources\VandorCategory\database\seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Database\Seeders\Service\ServiceSeeder;
+use App\Filament\Resources\VandorCategory\database\seeders\Service\ServiceSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
