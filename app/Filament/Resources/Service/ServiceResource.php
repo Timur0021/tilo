@@ -85,7 +85,8 @@ class ServiceResource extends Resource
                 Tables\Columns\TextColumn::make('title')
                     ->label('Title'),
                 Tables\Columns\TextColumn::make('description')
-                    ->label('Description'),
+                    ->label('Description')
+                    ->limit(20),
                 Tables\Columns\TextColumn::make('worker.name')
                     ->label('Worker'),
                 Tables\Columns\TextColumn::make('serviceCategory.title')

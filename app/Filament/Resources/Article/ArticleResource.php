@@ -76,7 +76,8 @@ class ArticleResource extends Resource
                 TextColumn::make('second_title')
                     ->label('Second Title'),
                 TextColumn::make('description')
-                    ->label('Description'),
+                    ->label('Description')
+                    ->limit(20),
                 Tables\Columns\SpatieMediaLibraryImageColumn::make('image_article')
                     ->disk('public')
                     ->collection('image_article')

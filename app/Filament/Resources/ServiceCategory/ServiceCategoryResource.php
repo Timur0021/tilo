@@ -70,7 +70,8 @@ class ServiceCategoryResource extends Resource
                 TextColumn::make('title')
                     ->label('Title'),
                 TextColumn::make('description')
-                    ->label('Description'),
+                    ->label('Description')
+                    ->limit(20),
                 Tables\Columns\SpatieMediaLibraryImageColumn::make('Banner')
                     ->disk('public')
                     ->collection('service_category_banner')

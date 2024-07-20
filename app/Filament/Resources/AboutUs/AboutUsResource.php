@@ -67,7 +67,8 @@ class AboutUsResource extends Resource
                 Tables\Columns\TextColumn::make('title')
                     ->label('Title'),
                 Tables\Columns\TextColumn::make('description')
-                    ->label('Description'),
+                    ->label('Description')
+                    ->limit(20),
                 Tables\Columns\TextColumn::make('advantages.title')
                     ->label('Advantages'),
                 Tables\Columns\SpatieMediaLibraryImageColumn::make('about_us_banner')

@@ -67,7 +67,8 @@ class VendorCategoryResource extends Resource
                 TextColumn::make('title')
                     ->label('Title'),
                 TextColumn::make('description')
-                    ->label('Description'),
+                    ->label('Description')
+                    ->limit(20),
                 Tables\Columns\SpatieMediaLibraryImageColumn::make('vendor_category_banner')
                     ->label('Banner image')
                     ->disk('public')

@@ -79,7 +79,8 @@ class VendorResource extends Resource
                 TextColumn::make('name')
                     ->label('Name'),
                 TextColumn::make('description')
-                    ->label('Description'),
+                    ->label('Description')
+                    ->limit(20),
                 TextColumn::make('vendorCategory.title')
                     ->label('Vendor Category'),
                Tables\Columns\SpatieMediaLibraryImageColumn::make('vendor_logo_banner')
