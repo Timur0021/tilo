@@ -52,6 +52,7 @@ class AboutUsResource extends Resource
                         Forms\Components\SpatieMediaLibraryFileUpload::make('about_us_banner')
                             ->label('About Us banner')
                             ->collection('about_us_banner')
+                            ->multiple()
                             ->image()
                             ->imageEditor(),
                     ])->columnSpan(2),

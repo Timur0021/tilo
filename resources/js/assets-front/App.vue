@@ -12,8 +12,6 @@ import Home from './pages/Home.vue';
 export default defineComponent({
     components: {
         HeaderComponent,
-        Home,
-
     }
 })
 </script>
